@@ -1,4 +1,4 @@
-#HTA 
+# HTA 
 ### "Free Bitcoin Easy Money"
 A simple hta file that announces you have won bitcoin and it is downloading.
 This was done for HTA learning purposes.
