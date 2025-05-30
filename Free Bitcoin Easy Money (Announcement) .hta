@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <Title>BITCOIN WINNER</Title>
+        <hta:application 
+            applicationname="BITCOIN WINNER"
+            border="thin"
+            borderStyle="normal"
+            name
+            id="oHTA"
+        />
+        <style>
+            body{
+                padding:50rem;
+                text-align:center;
+                justify-items:center;
+                display: flex;
+                max-width: 60rem;
+                justify-content:center;
+                align-items:center;
+                background-color: #212121;
+                color:white;
+            }
+            .textDiv{
+                background-color:yellow;
+                border: 2px solid black;
+                position: relative;
+                width:400px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            #ipdiv{
+                background-color:yellow;
+                border: 2px solid black;
+                position: relative;
+                width:800px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                color:black;
+                padding:40px;
+            }
+
+            #bitcoinInfo{
+                font-size: 20px; /* Set font size */
+                margin:auto auto;
+                font-weight: 800;
+                font-family: sans-serif;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Free Bitcoin! <br> This is designed to earn free money it has been shared with you becuase your cool! :) <3
+        </h1>
+        <div class="textDiv" id='textDivID'>
+            <p id="bitcoinInfo">bitcoin</p>
+        </div>
+        <div id="ipdiv">
+            <p id = "ip">0.0.0.0</p>
+        </div>
+        
+        <!-- let = variables only accessible in that scope
+         var = variables accessible in entire function regardless of code block -->
+        <script>
+            var shell = new ActiveXObject('WScript.shell');
+            // .run command in a new process and can either wait for it to complete or run asynchronyously
+            // By using the below 
+            // while (exec.Status === 0) {shell.Sleep(100);}
+            // shell.Run('cmd.exe /c ipconfig');
+            
+            // .exec runs the command and returns an object that allows you to interact with the running process 
+            var exec = shell.exec('cmd.exe /c ipconfig');
+            // ReadLine = first line, RealAll = all
+            var IPoutput = exec.StdOut.ReadAll();
+
+            var shellnet = new ActiveXObject('WScript.Network');
+      
+            var text = "Bitcoin sent to " + shellnet.Username + " from " + shellnet.ComputerName;
+            
+            var ip = "<b>You are now rich sending to your address at</b> <br>" + IPoutput;
+
+            document.getElementById("bitcoinInfo").innerHTML = text; // replace item text
+            document.getElementById("ip").innerHTML = ip;
+            alert("YOU ARE GETTING YOUR FREE BITCOIN " + shellnet.Username + "!!");      
+            
+            scammyText = document.getElementById("textDivID");
+            var pos = 0;
+            var dir = 1; // left or right 1 or -1
+            // set interval is a js function that repeatedly runs code at a set interval, to stop run clearInterval
+            setInterval(function(){
+                pos += 5 * dir;
+                if (pos > 200 || pos <= -200) {
+                    dir *= -1; //Reverse at the edges
+                }
+                scammyText.style.left = pos + "px";
+            },50)
+
+
+
+            var texttest = document.createTextNode("test"); // creates text 
+            //document.body.appendChild(texttest); // Adds plain text to the body
+
+            var div = document.createElement("div"); // Creates a new element in the body
+            div.innerText ="Hello!";
+            //document.body.appendChild(div);
+
+            var comments = document.createComment("This is a comment"); // Adds a comment to the it
+            //document.body.appendChild(comments);        
+        </script>
+    </body>
+</html>
